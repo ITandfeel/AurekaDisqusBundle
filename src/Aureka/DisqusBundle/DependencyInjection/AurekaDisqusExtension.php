@@ -17,10 +17,10 @@ class AurekaDisqusExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-
         $disqus_config = new Definition('Aureka\DisqusBundle\Model\Disqus');
-        $disqus_config->setFactoryClass('Aureka\DisqusBundle\Model\Disqus');
-        $disqus_config->setFactoryMethod('create');
+        //$disqus_config->setFactoryClass('Aureka\DisqusBundle\Model\Disqus');
+        //$disqus_config->setFactoryMethod('create');
+        $disqus_config->setFactory('Aureka\DisqusBundle\Model\Disqus::create');
         $disqus_config->addArgument($config['sso']);
         $disqus_config->addArgument($config['short_name']);
         $container->setDefinition('aureka_disqus.disqus', $disqus_config);
